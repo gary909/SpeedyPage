@@ -1,0 +1,49 @@
+@extends('layouts.base')
+
+@section('content')
+<section class="container mb-4">
+  <nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item"><a href="/category/{{ $deal['category'] }}">{{ ucwords(str_replace('-', ' ', $deal['category'])) }}</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{ $deal['title'] }}</li>
+    </ol>
+  </nav>
+</section>
+
+<section class="container">
+  <article class="deal-detail rounded-4 p-4 p-md-5">
+    <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+      <span class="badge text-bg-warning">{{ $deal['badge'] }}</span>
+      <small class="text-body-secondary">Updated {{ $deal['updated_at'] }}</small>
+    </div>
+
+    <h1 class="mb-3">{{ $deal['title'] }}</h1>
+    <p class="lead mb-4">{{ $deal['description'] }}</p>
+
+    <div class="row g-3 mb-4">
+      <div class="col-12 col-md-4">
+        <div class="stat-card">
+          <small>Merchant</small>
+          <strong>{{ $deal['merchant'] }}</strong>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="stat-card">
+          <small>Category</small>
+          <strong>{{ ucwords(str_replace('-', ' ', $deal['category'])) }}</strong>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="stat-card">
+          <small>Price</small>
+          <strong>EUR {{ $deal['price'] }}</strong>
+        </div>
+      </div>
+    </div>
+
+    <a class="btn btn-lg btn-primary" href="#" rel="nofollow sponsored">Go to Offer</a>
+    <p class="small text-body-secondary mt-3 mb-0">Affiliate disclosure: If you buy via this link, this site may earn a commission.</p>
+  </article>
+</section>
+@endsection

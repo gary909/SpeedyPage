@@ -1,0 +1,30 @@
+{% extends 'layouts.base' %}
+
+{% block content %}
+<section class="container mb-5">
+  <div class="hero-panel p-4 p-md-5 rounded-4">
+    <p class="eyebrow mb-2">Practice Build</p>
+    <h1 class="display-6 mb-3">Fast affiliate deals frontend with reusable Twig components</h1>
+    <p class="lead mb-4">This fake project mirrors the real freelance workflow: card-heavy templates, category landing pages, and lightweight server-rendered pages.</p>
+    <div class="d-flex flex-wrap gap-2">
+      {% for category in categories %}
+        <a class="btn btn-outline-dark" href="/category/{{ category.slug }}">{{ category.name }}</a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="h3 mb-0">Top Offers</h2>
+    <small class="text-body-secondary">Server-rendered, cache-ready</small>
+  </div>
+  <div class="row g-4">
+    {% for deal in deals %}
+      <div class="col-12 col-md-6 col-xl-4">
+        {% include 'components.offer-card' with { deal: deal } %}
+      </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
